@@ -6,7 +6,6 @@ import {
   OnGatewayDisconnect,
   MessageBody,
   WebSocketServer,
-  ConnectedSocket,
 } from '@nestjs/websockets';
 
 import { Server, Socket } from 'socket.io';
@@ -18,15 +17,18 @@ import { Server, Socket } from 'socket.io';
     origin: '*', // السماح لجميع النطاقات بالاتصال
   },
 })
+
+//  ننشئ بوابة WebSocket تسمى ChatGateway
 export class ChatGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
 {
-  private readonly processedMessages = new Set<string>();
+  private readonly processedMessages = new Set<string>(); // مجموعة (Set) لتخزين معرفات الرسائل التي تم معالجتها.
   // السيرفر الخاص بـ socket.io
   @WebSocketServer()
   server: Server;
 
   // هذا الحدث يتم عند تهيئة الـ Gateway لأول مرة
+  // غير مستخدم 
   afterInit(server: Server) {
     console.log('✅ WebSocket Gateway Initialized');
   }

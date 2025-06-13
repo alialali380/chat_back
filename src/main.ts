@@ -7,4 +7,5 @@ async function bootstrap() {
   app.enableCors(); // تأكد من تفعيل CORS
   await app.listen(3000, '0.0.0.0'); // استمع على جميع الواجهات
 }
+// تنفيذ الدالة
 bootstrap();
